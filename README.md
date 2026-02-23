@@ -1,48 +1,52 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
+# KMP BLE Scanner
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+A modern, cross-platform Bluetooth Low Energy (BLE) scanner application built with Kotlin Multiplatform (KMP) and Jetpack Compose. This app demonstrates how to handle BLE operations like scanning, connecting, and reading data on both Android and iOS from a shared codebase.
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## ✨ Features
+
+- **Cross-Platform:** Single shared codebase for Android and iOS.
+- **BLE Scanning:** Scans for nearby BLE devices and displays them in a list sorted by signal strength.
+- **Device Details:** View detailed information about a selected device.
+- **Secure Connection:** Handles secure bonding (pairing) with devices that require it.
+- **Battery Level Reader:** Connects to devices and reads the standard Battery Level characteristic.
+- **Modern UI:** A clean, multi-screen user interface built entirely with Compose Multiplatform.
+- **Demo Mode:** Includes a toggleable demo mode to showcase UI and app logic without real hardware, using hardcoded data.
+
+## 📸 Screenshots
+
+The application features a clean, intuitive UI for scanning, connecting, and monitoring devices.
+
+| Device List (Empty) | Device List (Found) | Device Details (Disconnected) | Device Details (Connected) |
+| :---: | :---: | :---: | :---: |
+| <img src="https://i.imgur.com/L1dM5I9.png" width="250"/> | <img src="https://i.imgur.com/kS9wVl4.png" width="250"/> | <img src="https://i.imgur.com/jE1lC9J.png" width="250"/> | <img src="https://i.imgur.com/g8vB5jD.png" width="250"/> |
+
+## 🛠️ Built With
+
+- [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) - For sharing code between Android and iOS.
+- [Jetpack Compose](https://developer.android.com/jetpack/compose) - For building the shared UI.
+- [Coroutines & StateFlow](https://kotlinlang.org/docs/coroutines-guide.html) - For managing asynchronous operations and UI state.
+- **Native BLE Frameworks**:
+    - `CoreBluetooth` on iOS.
+    - `android.bluetooth` on Android.
+
+## 🚀 Getting Started
+
+This is a Kotlin Multiplatform project targeting Android and iOS.
+
+*   `/composeApp` is for code that is shared across your Compose Multiplatform applications.
+*   `/iosApp` contains the iOS application entry point.
 
 ### Build and Run Android Application
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
+To build and run the development version of the Android app, use the "composeApp" run configuration from the run widget in your IDE’s toolbar or build it directly from the terminal:
+
 - on macOS/Linux
   ```shell
   ./gradlew :composeApp:assembleDebug
   ```
 - on Windows
-  ```shell
+```shell
   .\gradlew.bat :composeApp:assembleDebug
   ```
-
-### Build and Run Desktop (JVM) Application
-
-To build and run the development version of the desktop app, use the run configuration from the run widget
-in your IDE’s toolbar or run it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:run
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:run
-  ```
-
-### Build and Run iOS Application
-
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+Build and Run iOS Application
+To build and run the development version of the iOS app, use the "iosApp" run configuration from the run widget in your IDE’s toolbar or open the /iosApp directory in Xcode and run it from there.
