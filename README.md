@@ -16,9 +16,9 @@ A modern, cross-platform Bluetooth Low Energy (BLE) scanner application built wi
 
 The application features a clean, intuitive UI for scanning, connecting, and monitoring devices.
 
-| Device List (Empty) | Device List (Found) | Device Details (Disconnected) | Device Details (Connected) |
-| :---: | :---: | :---: | :---: |
-| <img src="https://i.imgur.com/L1dM5I9.png" width="250"/> | <img src="https://i.imgur.com/kS9wVl4.png" width="250"/> | <img src="https://i.imgur.com/jE1lC9J.png" width="250"/> | <img src="https://i.imgur.com/g8vB5jD.png" width="250"/> |
+|              Device List (Empty)               |             Device List (Found)                |              Device Details (Disconnected)               |               Device Details (Connected)               |
+|:----------------------------------------------:|:----------------------------------------------:|:--------------------------------------------------------:|:------------------------------------------------------:|
+| <img src="images/list_empty.png" width="250"/> | <img src="images/list_found.png" width="250"/> | <img src="images/detail_disconnected.png"  width="250"/> | <img src="images/detail_connected.png" width="250"/>   |
 
 ## 🛠️ Built With
 
