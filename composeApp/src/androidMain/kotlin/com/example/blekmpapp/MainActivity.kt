@@ -10,6 +10,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.blekmpapp.ble.PlatformSDK
+import android.content.Intent
+import com.example.blekmpapp.ble.BleService
 
 class MainActivity : ComponentActivity() {
 
@@ -21,8 +23,7 @@ class MainActivity : ComponentActivity() {
         ) { permissions ->
             // You can check here if all permissions were granted
             if (permissions.values.all { it }) {
-                // Permissions granted. The app can now function correctly.
-                // You could trigger an event here if needed, but for now, the user can just tap "Scan".
+                startBleService()
             } else {
                 // Permissions denied. You should show a message to the user.
             }
@@ -50,6 +51,9 @@ class MainActivity : ComponentActivity() {
         // This is the most robust way to handle BLE permissions.
         val permissionsToRequest = mutableListOf<String>()
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS)
+        }
         // For Android 12 (API 31) and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             permissionsToRequest.add(Manifest.permission.BLUETOOTH_SCAN)
@@ -65,6 +69,10 @@ class MainActivity : ComponentActivity() {
         permissionsToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION)
 
         requestPermissionLauncher.launch(permissionsToRequest.toTypedArray())
+    }
+    private fun startBleService() {
+        val intent = Intent(this, BleService::class.java)
+        startService(intent)
     }
 }
 
